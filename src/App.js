@@ -1,13 +1,13 @@
 import React from "react";
 
-import { Deneme } from "./Pages/Deneme/deneme";
+import PageNavbar from "./Pages/GeneralComponents/Navbar/navbar";
 
 import { store } from "./store/store";
 
 import { Provider } from "react-redux";
 
 function App() {
-  return <Deneme></Deneme>;
+  return <PageNavbar></PageNavbar>;
 }
 
 export default () => (
