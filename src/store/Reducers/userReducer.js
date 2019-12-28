@@ -11,6 +11,9 @@ export function userReducer(state = initialState, action) {
   switch (action.type) {
     case userActionNames.LOG_IN:
       return login(state, action.payload.username, action.payload.password);
+
+    case userActionNames.LOG_OUT:
+      return logout();
   }
 
   return state;
@@ -29,4 +32,10 @@ function login(state, username, password) {
   } else {
     // böyle birisi yok
   }
+
+  return state;
+}
+
+function logout() {
+  return initialState;
 }

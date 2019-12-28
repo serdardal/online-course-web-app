@@ -8,9 +8,14 @@ import {
   FormControl
 } from "react-bootstrap";
 import "./navbar.css";
-import { LoginBox } from "../LoginBox/loginBox";
+import LoginBox from "../LoginBox/loginBox";
+import { connect } from "react-redux";
 
-export class PageNavbar extends Component {
+class PageNavbar extends Component {
+  constructor(props) {
+    super(props);
+  }
+
   render() {
     return (
       <div>
@@ -30,22 +35,29 @@ export class PageNavbar extends Component {
                   placeholder="Search"
                   className="mr-sm-2"
                 />
-                <Button variant="outline-success">Search</Button>
+                <Button variant="outline-success" style={{ marginRight: 10 }}>
+                  Search
+                </Button>
               </Form>
             </div>
-            <NavDropdown
-              className="fixed-right"
-              title="My Account"
-              id="basic-nav-dropdown"
-            >
-              <NavDropdown.Item href="#action/3.1">My Courses</NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.2">
-                Bank Account
-              </NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.3">
-                Personal Information
-              </NavDropdown.Item>
-            </NavDropdown>
+
+            {this.props.currentUser !== "" && (
+              <NavDropdown
+                className="fixed-right"
+                title="My Account"
+                id="basic-nav-dropdown"
+              >
+                <NavDropdown.Item href="#action/3.1">
+                  My Courses
+                </NavDropdown.Item>
+                <NavDropdown.Item href="#action/3.2">
+                  Bank Account
+                </NavDropdown.Item>
+                <NavDropdown.Item href="#action/3.3">
+                  Personal Information
+                </NavDropdown.Item>
+              </NavDropdown>
+            )}
 
             <LoginBox />
           </Navbar.Collapse>
@@ -54,3 +66,13 @@ export class PageNavbar extends Component {
     );
   }
 }
+
+const mapStateToProps = state => {
+  return { currentUser: state.userReducer.currentUser };
+};
+
+const mapDispatchToProps = dispatch => {
+  return {};
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(PageNavbar);

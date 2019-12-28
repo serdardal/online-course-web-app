@@ -1,22 +1,22 @@
 export const users = [
   {
     name: "Serdar Dal",
-    userName: "serdar.dal",
+    userName: "serdar.dal@gmail.com",
     password: "serdar123"
   },
   {
     name: "Erder Çalışır",
-    userName: "erdem.calisir",
+    userName: "erdem.calisir@gmail.com",
     password: "erdem123"
   },
   {
     name: "Rahmican İşin",
-    userName: "rahmican.isin",
+    userName: "rahmican.isin@gmail.com",
     password: "rahmican123"
   },
   {
     name: "Talat Büyükbayram",
-    userName: "talat.buyukbayram",
+    userName: "talat.buyukbayram@gmail.com",
     password: "talat123"
   }
 ];
