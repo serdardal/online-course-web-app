@@ -1,0 +1,7 @@
+.fixed-right {
+  float: right;
+}
+.logo {
+  border-right: 1px solid black;
+  padding: 10px;
+}
