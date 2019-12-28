@@ -1,18 +1,22 @@
 import React from "react";
 
 import { Container, Row, Col } from "react-bootstrap";
-import { CourseItem } from "./Components/CourseItem/courseItem";
+import CourseItem from "./Components/CourseItem/courseItem";
 
-import {connect} from 'react-redux'
+import { connect } from "react-redux";
 
 function CourseList(props) {
   if (props.courses.length === 0) {
     return <text>There is no course to show!</text>;
   }
-  return <Container>{generateItems(props.courses)}</Container>;
+  return (
+    <Container>
+      {generateItems(props.courses, props.currentUser !== "")}
+    </Container>
+  );
 }
 
-function generateItems(courses) {
+function generateItems(courses, signedIn) {
   const rowList = [];
   const remainderItemNumber = courses.length % 3;
   const fullRowNumber = (courses.length - remainderItemNumber) / 3;
@@ -22,7 +26,10 @@ function generateItems(courses) {
     for (let j = 0; j < 3; j++) {
       colList.push(
         <Col>
-          <CourseItem course={courses[3 * i + j]}></CourseItem>
+          <CourseItem
+            course={courses[3 * i + j]}
+            signedIn={signedIn}
+          ></CourseItem>
         </Col>
       );
     }
@@ -34,7 +41,10 @@ function generateItems(courses) {
       if (i < remainderItemNumber) {
         colList.push(
           <Col>
-            <CourseItem course={courses[fullRowNumber * 3 + i]}></CourseItem>
+            <CourseItem
+              course={courses[fullRowNumber * 3 + i]}
+              signedIn={signedIn}
+            ></CourseItem>
           </Col>
         );
       } else {
@@ -48,7 +58,10 @@ function generateItems(courses) {
 }
 
 const mapStateToProps = state => {
-  return { courses: state.courseReducer.courses };
+  return {
+    courses: state.courseReducer.courses,
+    currentUser: state.userReducer.currentUser
+  };
 };
 
 const mapDispatchToProps = dispatch => {

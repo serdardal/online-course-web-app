@@ -1,27 +1,35 @@
 import React, { Component } from "react";
 import { Card, CardDeck, Button } from "react-bootstrap";
+import { connect } from "react-redux";
 import "./courseItem.css";
+import { addToCart } from "../../../../../store/Actions/userActions";
 
-export function CourseItem(props) {
+function CourseItem(props) {
+  function handleCartButton() {
+    if (props.signedIn) {
+      props.addToCart(props.course);
+    } else {
+      //uyarı göster
+      console.log("sepete eklemek giriş yapılmalı!");
+    }
+  }
+
   return (
     <div style={{ marginTop: 20, marginBottom: 20 }}>
       <Card>
         <Card.Img
           className="card-image"
           variant="top"
-          src="https://secureservercdn.net/50.62.172.212/i4u.275.myftpupload.com/wp-content/uploads/2019/12/072F831A-E088-40B4-AE6F-071BD77C7523.png"
+          src={require("../../../../../StaticFiles" + props.course.url)}
         />
         <Card.Body>
-          <Card.Title>Card title</Card.Title>
-          <Card.Text>
-            This is a wider card with supporting text below as a natural lead-in
-            to additional content. This content is a little bit longer.
-          </Card.Text>
+          <Card.Title>{props.course.name}</Card.Title>
+          <Card.Text>{props.course.description}</Card.Text>
         </Card.Body>
         <Card.Footer>
           <small className="text-muted">Last updated 3 mins ago</small>
           <div className="sepet-buton">
-            <Button variant="secondary">
+            <Button variant="secondary" onClick={() => handleCartButton()}>
               Sepete Ekle
               <i className=" fas fa-cart-plus"></i>
             </Button>
@@ -31,3 +39,15 @@ export function CourseItem(props) {
     </div>
   );
 }
+
+const mapStateToProps = state => {
+  return {};
+};
+
+const mapDispatchToProps = dispatch => {
+  return {
+    addToCart: course => dispatch(addToCart(course))
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(CourseItem);

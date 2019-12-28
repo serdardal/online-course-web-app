@@ -11,9 +11,31 @@ import "./navbar.css";
 import LoginBox from "../LoginBox/loginBox";
 import { connect } from "react-redux";
 
+import { search } from "../../../store/Actions/courseActions";
+
 class PageNavbar extends Component {
   constructor(props) {
     super(props);
+
+    this.state = {
+      searchBarText: ""
+    };
+
+    this.handleSearchBarInputEvent = this.handleSearchBarInputEvent.bind(this);
+    this.handleSearchButtonClick = this.handleSearchButtonClick.bind(this);
+  }
+
+  handleSearchBarInputEvent(event) {
+    const value = event.target.value;
+    this.setState({
+      searchBarText: value
+    });
+    console.log(value)
+  }
+
+  handleSearchButtonClick(event) {
+    this.props.search(this.state.searchBarText);
+    console.log("basıldı!")
   }
 
   render() {
@@ -34,8 +56,13 @@ class PageNavbar extends Component {
                   type="text"
                   placeholder="Search"
                   className="mr-sm-2"
+                  onChange={this.handleSearchBarInputEvent}
                 />
-                <Button variant="outline-success" style={{ marginRight: 10 }}>
+                <Button
+                  variant="outline-success"
+                  style={{ marginRight: 10 }}
+                  onClick={this.handleSearchButtonClick}
+                >
                   Search
                 </Button>
               </Form>
@@ -72,7 +99,9 @@ const mapStateToProps = state => {
 };
 
 const mapDispatchToProps = dispatch => {
-  return {};
+  return {
+    search: text => dispatch(search(text))
+  };
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(PageNavbar);

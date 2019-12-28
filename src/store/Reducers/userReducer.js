@@ -14,6 +14,9 @@ export function userReducer(state = initialState, action) {
 
     case userActionNames.LOG_OUT:
       return logout();
+
+    case userActionNames.ADD_TO_CART:
+      return addToCart(state, action.payload.course);
   }
 
   return state;
@@ -38,4 +41,12 @@ function login(state, username, password) {
 
 function logout() {
   return initialState;
+}
+
+function addToCart(state, item) {
+  console.log("sepete eklendi!")
+  return {
+    ...state,
+    cart: [...state.cart, item]
+  };
 }
