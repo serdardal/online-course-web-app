@@ -1,20 +1,23 @@
 import React from "react";
 import { CourseList } from "../GeneralComponents/CourseList/courseList";
 import { connect } from "react-redux";
-import ListScreenButtons from "./Components/listScreenButton/listScreenButtons";
+import ListScreenItemFooters from "./Components/listScreenButton/listScreenButtons";
 import { addToCart } from "../../store/Actions/userActions";
 
 function ListPage(props) {
+  function handleCartButton(course) {
+    if (props.currentUser !== "") {
+      props.addToCart(course);
+    } else {
+      //uyarı göster
+      console.log("sepete eklemek giriş yapılmalı!");
+    }
+  }
+
   return (
-    <CourseList
-      courses={props.courses}
-      buttons={
-        <ListScreenButtons
-          currentUser={props.currentUser}
-          addToCart={props.addToCart}
-        ></ListScreenButtons>
-      }
-    ></CourseList>
+    <CourseList courses={props.courses}>
+      <ListScreenItemFooters handle={handleCartButton}></ListScreenItemFooters>
+    </CourseList>
   );
 }
 
