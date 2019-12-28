@@ -13,6 +13,8 @@ import { connect } from "react-redux";
 
 import { search } from "../../../store/Actions/courseActions";
 
+import { Link } from "react-router-dom";
+
 class PageNavbar extends Component {
   constructor(props) {
     super(props);
@@ -30,20 +32,20 @@ class PageNavbar extends Component {
     this.setState({
       searchBarText: value
     });
-    console.log(value)
+    console.log(value);
   }
 
   handleSearchButtonClick(event) {
     this.props.search(this.state.searchBarText);
-    console.log("basıldı!")
+    console.log("basıldı!");
   }
 
   render() {
     return (
       <div>
         <Navbar bg="light fixed" expand="lg">
-          <Navbar.Brand className="logo" href="">
-            Online Course Platform
+          <Navbar.Brand className="logo">
+            <Link to="/">Online Course Platform</Link>
           </Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
@@ -74,14 +76,11 @@ class PageNavbar extends Component {
                 title="My Account"
                 id="basic-nav-dropdown"
               >
-                <NavDropdown.Item href="#action/3.1">
-                  My Courses
+                <NavDropdown.Item>
+                  <Link to="/cart">My Cart</Link>
                 </NavDropdown.Item>
-                <NavDropdown.Item href="#action/3.2">
-                  Bank Account
-                </NavDropdown.Item>
-                <NavDropdown.Item href="#action/3.3">
-                  Personal Information
+                <NavDropdown.Item>
+                  <Link to="/user-courses">My Courses</Link>
                 </NavDropdown.Item>
               </NavDropdown>
             )}
