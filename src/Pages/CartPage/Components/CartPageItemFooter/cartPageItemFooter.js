@@ -11,7 +11,7 @@ export function CartPageItemFooter(props) {
       <div className="sepet-buton">
         <Button variant="danger" onClick={() => props.handle(props.course)}>
           <i style={{ marginRight: 10 }} class="far fa-trash-alt"></i>
-          Sepetten Çıkar
+          Delete From Cart
         </Button>
       </div>
     </Card.Footer>

@@ -11,7 +11,7 @@ export default function ListPageItemFooter(props) {
       <div className="sepet-buton">
         <Button variant="secondary" onClick={() => props.handle(props.course)}>
           <i style={{ marginRight: 10 }} className=" fas fa-cart-plus"></i>
-          Sepete Ekle
+          Add To Cart
         </Button>
       </div>
     </Card.Footer>

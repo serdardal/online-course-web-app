@@ -2,7 +2,7 @@ import React from "react";
 
 import { Container, Row, Col } from "react-bootstrap";
 import { CourseItem } from "./Components/CourseItem/courseItem";
-import { message, Button } from "antd";
+import { message} from "antd";
 
 export function CourseList(props) {
   function generateItems(courses) {
@@ -15,7 +15,6 @@ export function CourseList(props) {
       for (let j = 0; j < 3; j++) {
         colList.push(
           <Col>
-            <Button>sdf</Button>
             <CourseItem course={courses[3 * i + j]}>
               {props.children}
             </CourseItem>

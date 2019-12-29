@@ -19,7 +19,7 @@ function CartPage(props) {
       {props.userCart.length !== 0 && (
         <div style={{ textAlign: "center" }}>
           <Button onClick={() => handlePurchaseButton()}>
-            Satın Al ({props.cartTotal} TL)
+            Buy All ({props.cartTotal} TL)
           </Button>
         </div>
       )}

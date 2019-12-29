@@ -7,8 +7,8 @@ export default function EnrolledCoursesPageItemFooter(props) {
       <small className="text-muted">Last watched time: 3 days ago</small>
       <div className="sepet-buton">
         <Button onClick={() => props.handle(props.course)}>
-          <i style={{marginRight:10}} class="fas fa-tv"></i>
-          İzle
+          <i style={{ marginRight: 10 }} class="fas fa-tv"></i>
+          Watch
         </Button>
       </div>
     </Card.Footer>

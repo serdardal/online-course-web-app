@@ -52,13 +52,14 @@ class PageNavbar extends Component {
             <Nav className="mr-auto">
               <Nav.Link href="#dersler">Courses</Nav.Link>
             </Nav>
-            <div>
-              <Form inline>
+            <div style={{ width: "70%"}}>
+              <Form inline style={{marginLeft:30}}>
                 <FormControl
                   type="text"
                   placeholder="Search"
                   className="mr-sm-2"
                   onChange={this.handleSearchBarInputEvent}
+                  style={{width:"50%"}}
                 />
                 <Link to="/">
                   <Button
@@ -66,7 +67,7 @@ class PageNavbar extends Component {
                     style={{ marginRight: 10 }}
                     onClick={this.handleSearchButtonClick}
                   >
-                    <i style={{marginRight:10}} class="fas fa-search"></i>
+                    <i style={{ marginRight: 10 }} class="fas fa-search"></i>
                     Search
                   </Button>
                 </Link>
