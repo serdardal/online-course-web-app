@@ -11,7 +11,6 @@ function ListPage(props) {
       props.addToCart(course);
     } else {
       message.warning("You must be logged in to add this course to your cart!");
-      console.log("sepete eklemek giriş yapılmalı!");
     }
   }
 
