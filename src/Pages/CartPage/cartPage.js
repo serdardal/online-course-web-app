@@ -1,9 +1,19 @@
 import React from "react";
 import { connect } from "react-redux";
 import { CourseList } from "../GeneralComponents/CourseList/courseList";
+import { CartPageItemFooter } from "./Components/CartPageItemFooter/cartPageItemFooter";
+import { deleteFromCart } from "../../store/Actions/userActions";
 
 function CartPage(props) {
-  return <CourseList courses={props.userCart}></CourseList>;
+  function handleCartButton(course) {
+    props.deleteFromCart(course);
+  }
+
+  return (
+    <CourseList courses={props.userCart}>
+      <CartPageItemFooter handle={handleCartButton}></CartPageItemFooter>
+    </CourseList>
+  );
 }
 
 const mapStateToProps = state => {
@@ -14,7 +24,9 @@ const mapStateToProps = state => {
 };
 
 const mapDispatchToProps = dispatch => {
-  return {};
+  return {
+    deleteFromCart: course => dispatch(deleteFromCart(course))
+  };
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(CartPage);

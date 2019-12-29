@@ -17,6 +17,9 @@ export function userReducer(state = initialState, action) {
 
     case userActionNames.ADD_TO_CART:
       return addToCart(state, action.payload.course);
+
+    case userActionNames.DELETE_FROM_CART:
+      return deleteFromCart(state, action.payload.course);
   }
 
   return state;
@@ -68,4 +71,15 @@ function isItemInCart(state, item) {
   }
 
   return res;
+}
+
+function deleteFromCart(state, item) {
+  const deletedCart = state.cart.filter(cartItem => {
+    return cartItem.id !== item.id;
+  });
+
+  return {
+    ...state,
+    cart: deletedCart
+  };
 }
