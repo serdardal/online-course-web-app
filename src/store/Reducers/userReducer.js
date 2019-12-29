@@ -44,9 +44,28 @@ function logout() {
 }
 
 function addToCart(state, item) {
-  console.log("sepete eklendi!")
-  return {
-    ...state,
-    cart: [...state.cart, item]
-  };
+  if (!isItemInCart(state, item)) {
+    console.log("sepete eklendi!");
+    return {
+      ...state,
+      cart: [...state.cart, item]
+    };
+  }
+
+  console.log("kurs zaten sepette!");
+  return state;
+}
+
+function isItemInCart(state, item) {
+  let res = false;
+  const cart = state.cart;
+
+  for (let i = 0; i < cart.length; i++) {
+    if (cart[i].id === item.id) {
+      res = true;
+      break;
+    }
+  }
+
+  return res;
 }
