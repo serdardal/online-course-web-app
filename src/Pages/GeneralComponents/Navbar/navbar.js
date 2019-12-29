@@ -60,13 +60,15 @@ class PageNavbar extends Component {
                   className="mr-sm-2"
                   onChange={this.handleSearchBarInputEvent}
                 />
-                <Button
-                  variant="outline-success"
-                  style={{ marginRight: 10 }}
-                  onClick={this.handleSearchButtonClick}
-                >
-                  Search
-                </Button>
+                <Link to="/">
+                  <Button
+                    variant="outline-success"
+                    style={{ marginRight: 10 }}
+                    onClick={this.handleSearchButtonClick}
+                  >
+                    Search
+                  </Button>
+                </Link>
               </Form>
             </div>
 
