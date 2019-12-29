@@ -12,6 +12,8 @@ import CartPage from "./Pages/CartPage/cartPage";
 
 import { Footer } from "./Pages/GeneralComponents/Footer/footer";
 
+import EnrolledCoursesPage from "./Pages/EnrolledCoursesPage/enrolledCoursesPage";
+
 function App() {
   return (
     <React.Fragment>
@@ -24,19 +26,12 @@ function App() {
           <CartPage></CartPage>
         </Route>
         <Route path="/user-courses">
-          <DenemeCom2></DenemeCom2>
+          <EnrolledCoursesPage></EnrolledCoursesPage>
         </Route>
       </Router>
       <Footer></Footer>
     </React.Fragment>
   );
-}
-
-function DenemeCom() {
-  return <h1>denemeee</h1>;
-}
-function DenemeCom2() {
-  return <h1>denemeee2</h1>;
 }
 
 export default () => (

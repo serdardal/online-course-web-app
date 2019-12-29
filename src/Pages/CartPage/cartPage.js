@@ -2,17 +2,28 @@ import React from "react";
 import { connect } from "react-redux";
 import { CourseList } from "../GeneralComponents/CourseList/courseList";
 import { CartPageItemFooter } from "./Components/CartPageItemFooter/cartPageItemFooter";
-import { deleteFromCart } from "../../store/Actions/userActions";
+import { deleteFromCart, purchaseAll } from "../../store/Actions/userActions";
+import { Button } from "react-bootstrap";
 
 function CartPage(props) {
   function handleCartButton(course) {
     props.deleteFromCart(course);
   }
 
+  function handlePurchaseButton() {
+    props.purchaseAll();
+  }
+
   return (
-    <CourseList courses={props.userCart}>
-      <CartPageItemFooter handle={handleCartButton}></CartPageItemFooter>
-    </CourseList>
+    <React.Fragment>
+      {props.userCart.length !== 0 && (
+        <Button onClick={() => handlePurchaseButton()}>Satın Al</Button>
+      )}
+
+      <CourseList courses={props.userCart}>
+        <CartPageItemFooter handle={handleCartButton}></CartPageItemFooter>
+      </CourseList>
+    </React.Fragment>
   );
 }
 
@@ -25,7 +36,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    deleteFromCart: course => dispatch(deleteFromCart(course))
+    deleteFromCart: course => dispatch(deleteFromCart(course)),
+    purchaseAll: () => dispatch(purchaseAll())
   };
 };
 

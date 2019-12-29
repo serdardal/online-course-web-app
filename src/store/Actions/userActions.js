@@ -2,7 +2,9 @@ export const userActionNames = {
   LOG_IN: "LOG_IN",
   LOG_OUT: "LOG_OUT",
   ADD_TO_CART: "ADD_TO_CART",
-  DELETE_FROM_CART: "DELETE_FROM_CART"
+  DELETE_FROM_CART: "DELETE_FROM_CART",
+  CLEAR_CART: "CLEAR_CART",
+  PURCHASE_ALL: "PURCHASE_ALL"
 };
 
 export function login(username, password) {
@@ -36,5 +38,17 @@ export function deleteFromCart(course) {
     payload: {
       course: course
     }
+  };
+}
+
+export function clearCart() {
+  return {
+    type: userActionNames.CLEAR_CART
+  };
+}
+
+export function purchaseAll() {
+  return {
+    type: userActionNames.PURCHASE_ALL
   };
 }

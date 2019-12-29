@@ -20,6 +20,12 @@ export function userReducer(state = initialState, action) {
 
     case userActionNames.DELETE_FROM_CART:
       return deleteFromCart(state, action.payload.course);
+
+    case userActionNames.CLEAR_CART:
+      return clearCart(state);
+
+    case userActionNames.PURCHASE_ALL:
+      return addEnrolledCourses(state);
   }
 
   return state;
@@ -47,7 +53,7 @@ function logout() {
 }
 
 function addToCart(state, item) {
-  if (!isItemInCart(state, item)) {
+  if (!isItemInCartOrCourses(state, item)) {
     console.log("sepete eklendi!");
     return {
       ...state,
@@ -55,16 +61,24 @@ function addToCart(state, item) {
     };
   }
 
-  console.log("kurs zaten sepette!");
+  console.log("kurs zaten sepette veya zaten sahipsiniz!");
   return state;
 }
 
-function isItemInCart(state, item) {
+function isItemInCartOrCourses(state, item) {
   let res = false;
   const cart = state.cart;
+  const enrolledCourses = state.enrolledCourses;
 
   for (let i = 0; i < cart.length; i++) {
     if (cart[i].id === item.id) {
+      res = true;
+      break;
+    }
+  }
+
+  for (let i = 0; i < enrolledCourses.length; i++) {
+    if (enrolledCourses[i].id === item.id) {
       res = true;
       break;
     }
@@ -81,5 +95,20 @@ function deleteFromCart(state, item) {
   return {
     ...state,
     cart: deletedCart
+  };
+}
+
+function clearCart(state) {
+  return {
+    ...state,
+    cart: []
+  };
+}
+
+function addEnrolledCourses(state) {
+  return {
+    ...state,
+    enrolledCourses: [...state.enrolledCourses, ...state.cart],
+    cart: []
   };
 }
