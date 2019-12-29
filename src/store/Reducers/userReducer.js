@@ -4,7 +4,9 @@ import { users } from "../../StaticFiles/staticDatas";
 const initialState = {
   currentUser: "",
   cart: [],
-  enrolledCourses: []
+  enrolledCourses: [],
+  budget: -1,
+  cartTotal: 0
 };
 
 export function userReducer(state = initialState, action) {
@@ -39,7 +41,8 @@ function login(state, username, password) {
   if (user !== undefined) {
     return {
       ...state,
-      currentUser: user.name
+      currentUser: user.name,
+      budget: user.budget
     };
   } else {
     // böyle birisi yok
@@ -57,7 +60,8 @@ function addToCart(state, item) {
     console.log("sepete eklendi!");
     return {
       ...state,
-      cart: [...state.cart, item]
+      cart: [...state.cart, item],
+      cartTotal: state.cartTotal + item.price
     };
   }
 
@@ -94,21 +98,30 @@ function deleteFromCart(state, item) {
 
   return {
     ...state,
-    cart: deletedCart
+    cart: deletedCart,
+    cartTotal: state.cartTotal - item.price
   };
 }
 
 function clearCart(state) {
   return {
     ...state,
-    cart: []
+    cart: [],
+    cartTotal: 0
   };
 }
 
 function addEnrolledCourses(state) {
-  return {
-    ...state,
-    enrolledCourses: [...state.enrolledCourses, ...state.cart],
-    cart: []
-  };
+  if (state.budget >= state.cartTotal) {
+    return {
+      ...state,
+      enrolledCourses: [...state.enrolledCourses, ...state.cart],
+      cart: [],
+      budget: state.budget - state.cartTotal,
+      cartTotal: 0
+    };
+  }
+
+  console.log("bakiye yetersiz!");
+  return state;
 }

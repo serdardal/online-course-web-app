@@ -17,7 +17,7 @@ function CartPage(props) {
   return (
     <React.Fragment>
       {props.userCart.length !== 0 && (
-        <Button onClick={() => handlePurchaseButton()}>Satın Al</Button>
+        <Button onClick={() => handlePurchaseButton()}>Satın Al ({props.cartTotal} TL)</Button>
       )}
 
       <CourseList courses={props.userCart}>
@@ -30,7 +30,8 @@ function CartPage(props) {
 const mapStateToProps = state => {
   return {
     userCart: state.userReducer.cart,
-    currentUser: state.userReducer.currentUser
+    currentUser: state.userReducer.currentUser,
+    cartTotal: state.userReducer.cartTotal
   };
 };
 

@@ -84,6 +84,7 @@ class PageNavbar extends Component {
                 <NavDropdown.Item>
                   <Link to="/user-courses">My Courses</Link>
                 </NavDropdown.Item>
+                <NavDropdown.Item>Wallet ({this.props.budget} TL)</NavDropdown.Item>
               </NavDropdown>
             )}
 
@@ -96,7 +97,10 @@ class PageNavbar extends Component {
 }
 
 const mapStateToProps = state => {
-  return { currentUser: state.userReducer.currentUser };
+  return {
+    currentUser: state.userReducer.currentUser,
+    budget: state.userReducer.budget
+  };
 };
 
 const mapDispatchToProps = dispatch => {
