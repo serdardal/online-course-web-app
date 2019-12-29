@@ -4,11 +4,14 @@ import { Button, Card } from "react-bootstrap";
 export default function ListPageItemFooter(props) {
   return (
     <Card.Footer>
-      <small className="text-muted">Last updated 3 mins ago</small>
+      <h5 style={{ display: "inline-block" }}>Price: </h5>
+      <h5 style={{ display: "inline-block" }} className="">
+        {props.course.price} TL
+      </h5>
       <div className="sepet-buton">
         <Button variant="secondary" onClick={() => props.handle(props.course)}>
+          <i style={{ marginRight: 10 }} className=" fas fa-cart-plus"></i>
           Sepete Ekle
-          <i className=" fas fa-cart-plus"></i>
         </Button>
       </div>
     </Card.Footer>

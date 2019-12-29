@@ -66,6 +66,7 @@ class PageNavbar extends Component {
                     style={{ marginRight: 10 }}
                     onClick={this.handleSearchButtonClick}
                   >
+                    <i style={{marginRight:10}} class="fas fa-search"></i>
                     Search
                   </Button>
                 </Link>
@@ -84,7 +85,9 @@ class PageNavbar extends Component {
                 <NavDropdown.Item>
                   <Link to="/user-courses">My Courses</Link>
                 </NavDropdown.Item>
-                <NavDropdown.Item>Wallet ({this.props.budget} TL)</NavDropdown.Item>
+                <NavDropdown.Item>
+                  Wallet ({this.props.budget} TL)
+                </NavDropdown.Item>
               </NavDropdown>
             )}
 

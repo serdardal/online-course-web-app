@@ -14,7 +14,7 @@ export function CourseItem(props) {
   }
   return (
     <div style={{ marginTop: 20, marginBottom: 20 }}>
-      <Card>
+      <Card style={{minHeight: 600}}>
         <Card.Img
           className="card-image"
           variant="top"

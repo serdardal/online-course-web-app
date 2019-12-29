@@ -17,7 +17,11 @@ function CartPage(props) {
   return (
     <React.Fragment>
       {props.userCart.length !== 0 && (
-        <Button onClick={() => handlePurchaseButton()}>Satın Al ({props.cartTotal} TL)</Button>
+        <div style={{ textAlign: "center" }}>
+          <Button onClick={() => handlePurchaseButton()}>
+            Satın Al ({props.cartTotal} TL)
+          </Button>
+        </div>
       )}
 
       <CourseList courses={props.userCart}>

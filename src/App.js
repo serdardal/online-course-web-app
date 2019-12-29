@@ -14,6 +14,8 @@ import { Footer } from "./Pages/GeneralComponents/Footer/footer";
 
 import EnrolledCoursesPage from "./Pages/EnrolledCoursesPage/enrolledCoursesPage";
 
+import SignPage from "./Pages/SignInPage/signInPage";
+
 function App() {
   return (
     <React.Fragment>
@@ -27,6 +29,9 @@ function App() {
         </Route>
         <Route path="/user-courses">
           <EnrolledCoursesPage></EnrolledCoursesPage>
+        </Route>
+        <Route path="/sign-in">
+          <SignPage></SignPage>
         </Route>
       </Router>
       <Footer></Footer>

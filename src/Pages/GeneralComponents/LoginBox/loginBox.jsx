@@ -3,6 +3,7 @@ import { Modal, Button, Form, Alert } from "react-bootstrap";
 import "./loginBox.css";
 import { login, logout } from "../../../store/Actions/userActions";
 import { connect } from "react-redux";
+import { Link } from "react-router-dom";
 
 class LoginBox extends Component {
   constructor(props) {
@@ -93,13 +94,9 @@ class LoginBox extends Component {
               />
             </Form.Group>
             <span>
-              <a
-                className="course-a"
-                src=""
-                href="https://www.youtube.com/?hl=tr&gl=TR"
-              >
+              <Link className="course-a" to="/sign-in">
                 Don't have an account
-              </a>
+              </Link>
             </span>
             <Button
               className="log-button"
