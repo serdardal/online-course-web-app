@@ -1,5 +1,7 @@
+import React from "react";
 import { userActionNames } from "../Actions/userActions";
 import { users } from "../../StaticFiles/staticDatas";
+import { message } from "antd";
 
 const initialState = {
   currentUser: "",
@@ -39,13 +41,14 @@ function login(state, username, password) {
   })[0];
 
   if (user !== undefined) {
+    message.success("Logged in successfully!");
     return {
       ...state,
       currentUser: user.name,
       budget: user.budget
     };
   } else {
-    // böyle birisi yok
+    message.warning("Wrong username or password!");
   }
 
   return state;
@@ -57,7 +60,7 @@ function logout() {
 
 function addToCart(state, item) {
   if (!isItemInCartOrCourses(state, item)) {
-    console.log("sepete eklendi!");
+    message.success("Course added to cart!");
     return {
       ...state,
       cart: [...state.cart, item],
@@ -65,7 +68,7 @@ function addToCart(state, item) {
     };
   }
 
-  console.log("kurs zaten sepette veya zaten sahipsiniz!");
+  message.warning("You have this course in your cart or enrolled courses!");
   return state;
 }
 
@@ -96,6 +99,8 @@ function deleteFromCart(state, item) {
     return cartItem.id !== item.id;
   });
 
+  message.success("Course deleted from your cart!");
+
   return {
     ...state,
     cart: deletedCart,
@@ -113,6 +118,9 @@ function clearCart(state) {
 
 function addEnrolledCourses(state) {
   if (state.budget >= state.cartTotal) {
+    message.success(
+      "Process successful, course added to your enrolled course list!"
+    );
     return {
       ...state,
       enrolledCourses: [...state.enrolledCourses, ...state.cart],
@@ -122,6 +130,6 @@ function addEnrolledCourses(state) {
     };
   }
 
-  console.log("bakiye yetersiz!");
+  message.warning("Insufficient balance!");
   return state;
 }

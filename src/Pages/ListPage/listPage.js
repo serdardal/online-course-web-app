@@ -3,13 +3,14 @@ import { CourseList } from "../GeneralComponents/CourseList/courseList";
 import { connect } from "react-redux";
 import ListPageItemFooter from "./Components/ListPageItemFooter/listPageItemFooter";
 import { addToCart } from "../../store/Actions/userActions";
+import { message } from "antd";
 
 function ListPage(props) {
   function handleCartButton(course) {
     if (props.currentUser !== "") {
       props.addToCart(course);
     } else {
-      //uyarı göster
+      message.warning("You must be logged in to add this course to your cart!");
       console.log("sepete eklemek giriş yapılmalı!");
     }
   }
