@@ -10,6 +10,8 @@ import { Provider } from "react-redux";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import CartPage from "./Pages/CartPage/cartPage";
 
+import { Footer } from "./Pages/GeneralComponents/Footer/footer";
+
 function App() {
   return (
     <React.Fragment>
@@ -25,6 +27,7 @@ function App() {
           <DenemeCom2></DenemeCom2>
         </Route>
       </Router>
+      <Footer></Footer>
     </React.Fragment>
   );
 }

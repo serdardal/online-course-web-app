@@ -1,0 +1,10 @@
+.back-grey {
+    background-color: #6c757d;
+}
+li .text-muted {
+    color: #ffffff!important;
+}
+.footer{
+position: absolute;
+    width: 100%;
+}

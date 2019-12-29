@@ -43,7 +43,11 @@ export function CourseList(props) {
   }
 
   if (props.courses.length === 0) {
-    return <text>There is no course to show!</text>;
+    return (
+      <div style={{ padding: 50 }}>
+        <text>There is no course to show!</text>
+      </div>
+    );
   }
 
   return <Container>{generateItems(props.courses)}</Container>;
