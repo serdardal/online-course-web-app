@@ -1,7 +1,7 @@
 import React from "react";
 import { CourseList } from "../GeneralComponents/CourseList/courseList";
 import { connect } from "react-redux";
-import ListScreenItemFooters from "./Components/listScreenButton/listScreenButtons";
+import ListPageItemFooter from "./Components/ListPageItemFooter/listPageItemFooter";
 import { addToCart } from "../../store/Actions/userActions";
 
 function ListPage(props) {
@@ -16,7 +16,7 @@ function ListPage(props) {
 
   return (
     <CourseList courses={props.courses}>
-      <ListScreenItemFooters handle={handleCartButton}></ListScreenItemFooters>
+      <ListPageItemFooter handle={handleCartButton}></ListPageItemFooter>
     </CourseList>
   );
 }

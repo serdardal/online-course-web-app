@@ -2,7 +2,7 @@ import React from "react";
 import { Button } from "react-bootstrap";
 import { Card } from "react-bootstrap";
 
-export default function ListScreenItemFooters(props) {
+export default function ListPageItemFooter(props) {
   return (
     <Card.Footer>
       <small className="text-muted">Last updated 3 mins ago</small>
